@@ -1,0 +1,34 @@
+Table time {
+  id int [PK]
+  nome varchar
+  tecnico_id int
+}
+
+table jogador {
+  id int [PK]
+  nome varchar
+  time_id int
+}
+
+Table Tecnico {
+  id int [primary key]
+  nome varchar
+}
+
+Table jogo {
+  id int [PK]
+  data datetime
+}
+
+table time_jogo {
+  id int [PK]
+  time_id int
+  jogo_id int
+}
+
+Ref: jogador.time_id > time.id
+Ref: time.tecnico_id > Tecnico.id
+Ref: time_jogo.time_id > time.id
+Ref: time_jogo.jogo_id > jogo.id
+
+

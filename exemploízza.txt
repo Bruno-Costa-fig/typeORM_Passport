@@ -1,0 +1,57 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+// Table follows {
+//   following_user_id integer
+//   followed_user_id integer
+//   created_at timestamp 
+// }
+
+// Table users {
+//   id integer [primary key]
+//   username varchar
+//   role varchar
+//   created_at timestamp
+// }
+
+// Table posts {
+//   id integer [primary key]
+//   title varchar
+//   body text [note: 'Content of the post']
+//   user_id integer
+//   status varchar
+//   created_at timestamp
+// }
+
+Table pedido {
+  id integer [primary key]
+}
+
+Table itempedido {
+  id integer [primary key]
+  pedido_id integer
+  pizza_id integer
+  refrigerante_id integer
+}
+
+Table pizza {
+  id integer [primary key]
+  tamanho varchar
+}
+
+Table ingrediente {
+  id integer [primary key]
+  descricao varchar
+  quantidade varchar
+  medida varchar
+}
+
+Table ingredientes_pizza {
+  pizza_id integer
+  ingrediente_id integer
+}
+
+Ref: ingredientes_pizza.pizza_id > pizza.id
+Ref: ingredientes_pizza.ingrediente_id > ingrediente.id
+Ref: itempedido.pedido_id > pedido.id
+Ref: itempedido.pizza_id > pizza.id
